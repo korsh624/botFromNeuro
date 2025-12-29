@@ -3,7 +3,7 @@ import numpy as np
 import serial
 import time
 
-# --- Serial ---
+# --- Serial connect---
 ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)  # Linux '/dev/ttyUSB0'
 time.sleep(2)
 
