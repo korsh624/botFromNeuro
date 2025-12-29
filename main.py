@@ -4,7 +4,7 @@ import serial
 import time
 
 # --- Serial ---
-ser = serial.Serial('COM3', 9600, timeout=1)  # Linux '/dev/ttyUSB0'
+ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)  # Linux '/dev/ttyUSB0'
 time.sleep(2)
 
 # --- Camera ---
@@ -14,7 +14,7 @@ HEIGHT = 480
 cap.set(3, WIDTH)
 cap.set(4, HEIGHT)
 
-BASE_SPEED = 120
+BASE_SPEED = 180
 KP = 0.6
 
 def send(left, right):
