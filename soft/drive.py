@@ -9,7 +9,7 @@ import os
 # --- НАСТРОЙКИ ---
 CAMERA_INDEX = 0
 SERIAL_PORT = '/dev/ttyUSB0'
-BAUD_RATE = 9600
+BAUD_RATE = 115200
 BASE_SPEED = 255
 KP = 0.5
 MAX_SPEED = 255
