@@ -4,7 +4,7 @@ import serial
 import time
 
 # --- Serial connect---
-ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)  # Linux '/dev/ttyUSB0'
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)  # Linux '/dev/ttyACM0'
 time.sleep(2)
 
 # --- Camera ---
@@ -16,6 +16,7 @@ cap.set(4, HEIGHT)
 
 BASE_SPEED = 180
 KP = 0.6
+count = 0
 
 def send(left, right):
     cmd = f"{left},{right}\n"
@@ -26,6 +27,7 @@ while True:
     if not ret:
         break
 
+    count+=1
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (5,5), 0)
     _, thresh = cv2.threshold(blur, 0, 255,
@@ -35,7 +37,6 @@ while True:
 
     contours, _ = cv2.findContours(
         roi, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
     if contours:
         cnt = max(contours, key=cv2.contourArea)
         M = cv2.moments(cnt)
@@ -50,8 +51,9 @@ while True:
 
             left = max(min(left, 255), -255)
             right = max(min(right, 255), -255)
-
-            send(left, right)
+            if count >20:
+              print(right, left)
+              send(right, left)
     else:
         send(0, 0)
 
