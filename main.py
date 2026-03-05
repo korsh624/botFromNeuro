@@ -14,7 +14,7 @@ HEIGHT = 480
 cap.set(3, WIDTH)
 cap.set(4, HEIGHT)
 
-BASE_SPEED = 255
+BASE_SPEED = 200
 KP = 0.5
 count = 0
 
@@ -49,8 +49,8 @@ while True:
             left = BASE_SPEED - correction
             right = BASE_SPEED + correction
 
-            left = max(min(left, 255), -255)
-            right = max(min(right, 255), -255)
+            left = max(min(left, 200), -200)
+            right = max(min(right, 200), -200)
             if count >20:
               print(right, left)
               send(right, left)
