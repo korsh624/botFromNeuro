@@ -18,7 +18,7 @@ cap.set(4, HEIGHT)
 writer = None
 BASE_SPEED = 200
 MAX_SPEED = 255
-KP = 0.4
+KP = 0.5
 count = 0
 
 VIDEO_DIR = "/home/aieye/drive/botFromNeuro/videos"
