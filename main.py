@@ -14,8 +14,8 @@ HEIGHT = 480
 cap.set(3, WIDTH)
 cap.set(4, HEIGHT)
 
-BASE_SPEED = 180
-KP = 0.6
+BASE_SPEED = 255
+KP = 0.5
 count = 0
 
 def send(left, right):
