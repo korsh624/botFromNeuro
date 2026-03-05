@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import serial
 import time
+import datetime
+
 
 # --- Serial connect---
 ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)  # Linux '/dev/ttyACM0'
@@ -21,7 +23,7 @@ count = 0
 VIDEO_DIR = "/home/aieye/drive/botFromNeuro/videos"
 
 
-def write_frame_to_video(frame, video_writer=None, filename="output.mp4", fps=30):
+def write_frame_to_video(frame, video_writer=None,  fps=30):
     """
     frame - изображение OpenCV (numpy array)
     video_writer - объект cv2.VideoWriter (если None, создается новый)
@@ -32,6 +34,7 @@ def write_frame_to_video(frame, video_writer=None, filename="output.mp4", fps=30
     height, width = frame.shape[:2]
 
     if video_writer is None:
+        filename = datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + ".mp4"
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
         video_writer = cv2.VideoWriter(filename, fourcc, fps, (width, height))
 
