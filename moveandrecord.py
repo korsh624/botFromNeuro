@@ -17,6 +17,7 @@ cap.set(3, WIDTH)
 cap.set(4, HEIGHT)
 writer = None
 BASE_SPEED = 200
+MAX_SPEED = 255
 KP = 0.4
 count = 0
 
@@ -72,11 +73,12 @@ while True:
             error = cx - WIDTH//2
             correction = int(KP*error)
 
-            left = BASE_SPEED - correction
-            right = BASE_SPEED + correction
-
-            left = max(min(left, 200), -200)
-            right = max(min(right, 200), -200)
+            # left = BASE_SPEED - correction
+            # right = BASE_SPEED + correction
+            left = np.clip(BASE_SPEED - correction, -MAX_SPEED, MAX_SPEED)
+            right = np.clip(BASE_SPEED + correction, -MAX_SPEED, MAX_SPEED)
+            # left = max(min(left, MAX_SPEED), -MAX_SPEED)
+            # right = max(min(right, MAX_SPEED), -MAX_SPEED)
             if count >20:
               print(right, left)
               send(right, left)
