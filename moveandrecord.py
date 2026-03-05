@@ -15,7 +15,7 @@ WIDTH = 640
 HEIGHT = 480
 cap.set(3, WIDTH)
 cap.set(4, HEIGHT)
-
+writer = None
 BASE_SPEED = 200
 KP = 0.6
 count = 0
