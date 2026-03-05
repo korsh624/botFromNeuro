@@ -25,12 +25,7 @@ VIDEO_DIR = "/home/aieye/drive/botFromNeuro/videos"
 
 
 def write_frame_to_video(frame, video_writer=None,  fps=24):
-    """
-    frame - изображение OpenCV (numpy array)
-    video_writer - объект cv2.VideoWriter (если None, создается новый)
-    filename - имя видеофайла
-    fps - частота кадров
-    """
+
 
     height, width = frame.shape[:2]
 
