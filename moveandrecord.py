@@ -17,14 +17,14 @@ cap.set(3, WIDTH)
 cap.set(4, HEIGHT)
 writer = None
 BASE_SPEED = 200
-MAX_SPEED = 255
+MAX_SPEED = 200
 KP = 0.5
 count = 0
 
 VIDEO_DIR = "/home/aieye/drive/botFromNeuro/videos"
 
 
-def write_frame_to_video(frame, video_writer=None,  fps=30):
+def write_frame_to_video(frame, video_writer=None,  fps=24):
     """
     frame - изображение OpenCV (numpy array)
     video_writer - объект cv2.VideoWriter (если None, создается новый)
